@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Nukitashi2.Scene
 {
-    class GamePlay
+    enum Scene
     {
+        Load,
+        Title,
+        GamePlay,
+        GamePlay2,
+        Ending,
+        GameOver,
     }
 }
