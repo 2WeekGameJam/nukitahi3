@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nukitashi2", "Nukitashi2\Nukitashi2.csproj", "{F6D6C6D7-4A49-459D-8F2B-9EDD126FF14D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6D6C6D7-4A49-459D-8F2B-9EDD126FF14D}.Debug|x86.ActiveCfg = Debug|x86
+		{F6D6C6D7-4A49-459D-8F2B-9EDD126FF14D}.Debug|x86.Build.0 = Debug|x86
+		{F6D6C6D7-4A49-459D-8F2B-9EDD126FF14D}.Release|x86.ActiveCfg = Release|x86
+		{F6D6C6D7-4A49-459D-8F2B-9EDD126FF14D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A677965-54A6-467C-A64F-4D39617ACB50}
+	EndGlobalSection
+EndGlobal
