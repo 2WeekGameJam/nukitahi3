@@ -46,3 +46,4 @@ D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.csproj.Co
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.csproj.CopyComplete
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.exe
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.pdb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\haikei.xnb
