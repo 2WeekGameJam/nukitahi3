@@ -11,8 +11,6 @@ namespace Nukitashi2.Scene
         Load,
         Title,
         GamePlay,
-        GamePlay2,
-        Ending,
         GameOver,
     }
 }
