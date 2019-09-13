@@ -54,6 +54,11 @@ namespace Nukitashi2
             //ゲームデバイスの実体を取得
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
             sceneManager = new SceneManager();
+            sceneManager.Add(Scene.Scene.Load, new Load());
+            sceneManager.Add(Scene.Scene.Title, new Title());
+            sceneManager.Add(Scene.Scene.GamePlay, new GamePlay());
+            sceneManager.Add(Scene.Scene.GameOver, new GameOver());
+            sceneManager.Change(Scene.Scene.Load);
 
             CSVReader csvReader = new CSVReader();
             csvReader.Read("map.csv");
@@ -73,6 +78,15 @@ namespace Nukitashi2
             
             renderer = gameDevice.GetRenderer();
 
+            renderer.LoadContent("load", "./Texture/");
+            renderer.LoadContent("number", "./Texture/");
+
+            //１ピクセルの黒色の画像を生成しレンダラーに登録
+            Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
+            Color[] colors = new Color[1 * 1];
+            colors[0] = new Color(0, 0, 0);
+            fade.SetData(colors);
+            renderer.LoadContent("fade", fade);
 
             Sound sound = gameDevice.GetSound();
             string filepath = "./Sound/";
@@ -109,7 +123,7 @@ namespace Nukitashi2
 
             // この下に更新ロジックを記述
 
-            gameDevice.Update(gameTime);
+            sceneManager.Update(gameTime);
 
 
             // この上にロジックを記述
