@@ -1,0 +1,3 @@
+赤　エネミーa  name enemy
+緑　エネミーb  name enemy2
+黄　エネミーc  name enemy3

@@ -1,0 +1,3 @@
+player  64*128
+enemy   64*64
+boss    128*192
