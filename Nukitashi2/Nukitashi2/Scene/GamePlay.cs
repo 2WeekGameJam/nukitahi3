@@ -37,7 +37,11 @@ namespace Nukitashi2.Scene
             isEndFlag = false;
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
-
+            map.Load("");
+            gameObjectManager.Add(map);
+            GameObjectCSVParser parser = new GameObjectCSVParser();
+            var dataList = parser.Parse("");
+            
         }
 
         public bool IsEnd()
@@ -57,10 +61,13 @@ namespace Nukitashi2.Scene
 
         public void Update(GameTime gameTime)
         {
+            map.Update(gameTime);
             if(Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
             }
+
+            gameObjectManager.Update(gameTime);
         }
     }
 }
