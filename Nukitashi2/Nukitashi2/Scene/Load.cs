@@ -44,6 +44,7 @@ namespace Nukitashi2.Scene
                 { "en", path},
                 { "luiman", path},
                 { "blockkabe", path},
+                { "player", path},
 
                 //必要に応じて自分で追加
             };

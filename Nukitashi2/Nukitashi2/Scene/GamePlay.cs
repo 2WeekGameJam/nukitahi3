@@ -65,6 +65,7 @@ namespace Nukitashi2.Scene
             {
                 isEndFlag = true;
             }
+
             gameObjectManager.Update(gameTime);
         }
     }
