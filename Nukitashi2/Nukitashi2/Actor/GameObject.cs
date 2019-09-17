@@ -54,7 +54,7 @@ namespace Nukitashi2.Actor
 
         public virtual void Draw(Renderer renderer)
         {
-            //renderer.DrawTexture(name, position + gameDevice.GetDisplayMobilify());
+            renderer.DrawTexture(name, position);
         }
         public bool IsDead()
         {

@@ -73,3 +73,54 @@
 /processorParam:TextureFormat=Color
 /build:Texture/number.bmp
 
+#begin Texture/Blockkabe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/Blockkabe.png
+
+#begin Texture/Blockkusa.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/Blockkusa.png
+
+#begin Texture/player.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/player.png
+
+#begin csv/GameObjectParameter.csv
+/copy:csv/GameObjectParameter.csv
+
+#begin csv/GameObjectParameter2.csv
+/copy:csv/GameObjectParameter2.csv
+
+#begin csv/map.csv
+/copy:csv/map.csv
+
+#begin csv/stage01.csv
+/copy:csv/stage01.csv
+
+#begin csv/stage02.csv
+/copy:csv/stage02.csv
+

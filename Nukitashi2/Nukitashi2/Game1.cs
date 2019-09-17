@@ -60,10 +60,6 @@ namespace Nukitashi2
             sceneManager.Add(Scene.Scene.GameOver, new GameOver());
             sceneManager.Change(Scene.Scene.Load);
 
-            CSVReader csvReader = new CSVReader();
-            csvReader.Read("map.csv");
-
-            
 
             // この上にロジックを記述
             base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
