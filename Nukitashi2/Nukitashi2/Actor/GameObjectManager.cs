@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nukitashi2.Def;
 
 namespace Nukitashi2.Actor
 {
@@ -55,10 +56,7 @@ namespace Nukitashi2.Actor
         }
         private void hitToMap()
         {
-            if (map == null)
-            {
-                return;
-            }
+            if (map == null)return;
             foreach (var obj in gameObjectList)
             {
                 map.Hit(obj);

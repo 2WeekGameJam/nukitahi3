@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nukitashi2.Device;
+using Nukitashi2.Def;
 
 namespace Nukitashi2.Scene
 {
@@ -22,6 +23,7 @@ namespace Nukitashi2.Scene
         {
             renderer.Begin();
             renderer.DrawTexture("haikei", Vector2.Zero);
+            renderer.DrawTexture("pushspace", new Vector2(Screen.Width / 2, Screen.Height / 1.5f));
             renderer.End();
         }
 

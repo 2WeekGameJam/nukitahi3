@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Nukitashi2.Device;
 
-namespace Nukitashi2.Actor
+namespace Nukitashi2.Actor.Blocks
 {
-    class B : GameObject
+    class NextSpace : GameObject
     {
-        public B(Vector2 pos,GameDevice gameDevice)
-            :base("blockkusa", pos, 32, 32, gameDevice)
-        { }
-        public B(B other)
+        public NextSpace(Vector2 position, GameDevice gameDevice)
+             : base("", position, 32, 32, gameDevice)
+        {
+            
+        }
+        public NextSpace(NextSpace other)
             : this(other.position, other.gameDevice)
-        { }
+        {  }
         public override object Clone()
         {
-            return new B(this);
+            return new NextSpace(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
-            
         }
 
         public override void Updata(GameTime gameTime)
