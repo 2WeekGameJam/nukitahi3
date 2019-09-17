@@ -51,3 +51,11 @@ D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Text
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\load.xnb
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\luiman.xnb
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\number.xnb
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\blockkabe.xnb
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\blockkusa.xnb
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\player.xnb
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\CSV\GameObjectParameter.csv
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\CSV\map.csv
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\CSV\GameObjectParameter2.csv
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\CSV\stage01.csv
+D:\2019_September_2Week\nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\CSV\stage02.csv
