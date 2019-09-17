@@ -6,137 +6,127 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nukitashi2.Device;
+using Nukitashi2.Def;
+using Nukitashi2.Actor.Blocks;
+using Nukitashi2.Utility;
 
 namespace Nukitashi2.Actor
 {
     class Player : GameObject
     {
-        //リスポーン用Cloneセット
-        private string nameC;
-        private Vector2 positionC;
-        private GameDevice gameDeviceC;
-
         private Vector2 velocity;
-        private float speed;
-
-        private bool flontR;//true→右向いとる
-
         private bool isJump;
-        private float jumpVel;
-
-        /// <summary>
-        /// Playerの生成
-        /// </summary>
-        /// <param name="name">描画ファイル</param>
-        /// <param name="position">初期位置</param>
-        /// <param name="gameDevice">ゲームデバイス</param>
-        public Player(string name, Vector2 position, GameDevice gameDevice) : base(name, position, 64, 128, gameDevice)
+        private IGameObjectMediator mediator;
+        private bool gool;
+        private Motion motion;
+        public Player(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+               : base("player", position, 32, 32, gameDevice)
         {
-            nameC = name;
-            positionC = position;
-            gameDeviceC = gameDevice;
-
-            velocity = new Vector2(0.0f, 0.0f);
-            speed = 3.0f;
-
-            flontR = true;
-
-            isJump = false;
-            jumpVel = 3.0f;
+            velocity = Vector2.Zero;
+            isJump = true;
+            this.mediator = mediator;
+            gool = false;
+            //motion = new Motion();
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    motion.Add(i, new Rectangle(32, 32 * (i / 2), 32, 32));
+            //}
+            //motion.Initialize(new Range(0, 1), new CountDownTimer(1.0f));
         }
-
-        /// <summary>
-        /// Playerリスポーン用
-        /// </summary>
-        /// <returns></returns>
+        public Player(Player other)
+            : this(other.position, other.gameDevice, other.mediator)
+        { }
         public override object Clone()
         {
-            return new Player(nameC, positionC, gameDeviceC);
+            return new Player(this);
         }
-
         public override void Hit(GameObject gameObject)
         {
-            #region ブロックとの判定(仮)
-            if (gameObject is B)
+            if (gameObject is B||gameObject is B2)
             {
-                if (CheckDirection(gameObject) is Direction.Bottom)
-                {
-                    jumpVel=0.0f;
-                }
-                else if(CheckDirection(gameObject) is Direction.Top)
-                {
-                    isJump=false;
-                    jumpVel=3.0f;
-                }
-                else if(CheckDirection(gameObject) is Direction.Left)
-                {
-                    if (velocity.X > 0.0f)
-                    {
-                        velocity.X = 0.0f;
-                    }
-                }
-                else
-                {
-                    if (velocity.X< 0.0f)
-                    {
-                        velocity.X = 0.0f;
-                    }
-                }
+                hitBlock(gameObject);
             }
-            #endregion
+            if (gameObject is NextSpace)
+                gool = true;
         }
-
         public override void Updata(GameTime gameTime)
         {
-            //Inputの仕様上アローキーのみ
-            velocity.X = velocity.X + Input.Velocity().X * speed;
-
-            if (Input.GetKeyState(Keys.Right))
+            if ((isJump == false) &&
+                (Input.GetKeyTrigger(Keys.Space)))
             {
-                flontR = true;
-            }
-            if (Input.GetKeyState(Keys.Left))
-            {
-                flontR = false;
-            }
-
-            if (Input.GetKeyTrigger(Keys.Z))
-            {
-                if (flontR)
-                {
-
-                }
-                else
-                {
-
-                }
-            }
-
-            #region ジャンプ関連
-            if (Input.GetKeyTrigger(Keys.Space) && isJump is false)
-            {
+                //8.0
+                velocity.Y = -6.0f;
                 isJump = true;
             }
-
-            if (isJump)
+            else
             {
-                velocity.Y = velocity.Y / 1.5f;
-                velocity.Y = velocity.Y - jumpVel;
-                if (jumpVel <= 3.0f && jumpVel >= -3.0f)
+                //0.4
+                velocity.Y += 0.2f;
+                velocity.Y = (velocity.Y > 16.0f) ? (16.0f) : (velocity.Y);
+            }
+            float speed = 4.0f;
+            //if(Input.GetKeyTrigger(Keys.X))
+            //{
+            //    isDeadFlag = true;
+            //}
+            velocity.X = Input.Velocity().X * speed;
+            if (position.X <= 0&&velocity.X<=0.1 || position.X >= Screen.Width - width&&velocity.X>=-0.1)
+            {
+                velocity.X = 0;
+            }
+            position = position + velocity;
+            //UpdateMotion();
+        }
+        private void hitBlock(GameObject gameObject)
+        {
+            Direction dir = CheckDirection(gameObject);
+            if (dir == Direction.Top)
+            {
+                if (position.Y > 0.0f)
                 {
-                    jumpVel = jumpVel - 0.6f;
+                    position.Y = gameObject.getRectangle().Top - height;
+                    velocity.Y = 0.0f;
+                    isJump = false;
                 }
             }
-            #endregion
-
-            position = position + velocity;
-
-            velocity.X = 0;
+            else if (dir == Direction.Right)
+            {
+                position.X = gameObject.getRectangle().Right;
+            }
+            else if (dir == Direction.Left)
+            {
+                position.X = gameObject.getRectangle().Left - width;
+            }
+            else if (dir == Direction.Bottom)
+            {
+                position.Y = gameObject.getRectangle().Bottom;
+                if (isJump)
+                {
+                    velocity.Y = 0.0f;
+                }
+            }
         }
-
         public override void Draw(Renderer renderer)
         {
-            renderer.DrawTexture(name, position);
+            renderer.DrawTexture(name, position/*, motion.DrawingRange()*/);
+        }
+        //private void UpdateMotion()
+        //{
+        //    Vector2 velocity = Input.Velocity();
+        //    if (velocity.Length() <= 0.0f)
+        //    { return; }
+        //    else if (velocity.X > 0.0f)
+        //    {
+        //        motion.Initialize(new Range(0, 0), new CountDownTimer());
+        //    }
+        //    else if (velocity.X < 0.0f)
+        //    {
+        //        motion.Initialize(new Range(1, 1), new CountDownTimer());
+        //    }
+        //}
+        public bool GetNext()
+        {
+            return gool;
         }
     }
 }

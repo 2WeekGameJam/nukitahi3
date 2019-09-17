@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Actor\Blocks\B.cs" />
+    <Compile Include="Actor\Blocks\B2.cs" />
     <Compile Include="Actor\Blocks\NextSpace.cs" />
     <Compile Include="Actor\Blocks\Space.cs" />
     <Compile Include="Actor\Enemy.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Actor\IGameObjectMediator.cs" />
     <Compile Include="Actor\Map.cs" />
     <Compile Include="Actor\Player.cs" />
+    <Compile Include="Actor\Shoot.cs" />
     <Compile Include="Def\Screen.cs" />
     <Compile Include="Device\BGMLoader.cs" />
     <Compile Include="Device\CSVReader.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Utility\CountDownTimer.cs" />
     <Compile Include="Utility\CountUpTimer.cs" />
     <Compile Include="Utility\GameObjectCSVParser.cs" />
+    <Compile Include="Utility\Motion.cs" />
     <Compile Include="Utility\Range.cs" />
     <Compile Include="Utility\Timer.cs" />
   </ItemGroup>

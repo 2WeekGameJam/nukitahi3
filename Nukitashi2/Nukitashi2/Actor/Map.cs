@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Nukitashi2.Device;
 using Nukitashi2.Utility;
 using Nukitashi2.Actor.Block;
+using Nukitashi2.Actor.Blocks;
 
 namespace Nukitashi2.Actor
 {
@@ -24,6 +25,9 @@ namespace Nukitashi2.Actor
             Dictionary<string, GameObject> objctDict = new Dictionary<string, GameObject>();
             objctDict.Add("0", new Space(Vector2.Zero, gameDevice));
             objctDict.Add("1", new B(Vector2.Zero, gameDevice));
+            objctDict.Add("2", new B2(Vector2.Zero, gameDevice));
+            objctDict.Add("3", new NextSpace(Vector2.Zero, gameDevice));
+
             List<GameObject> workList = new List<GameObject>();
             int colCnt = 0;
             foreach (var s in line)
@@ -114,7 +118,7 @@ namespace Nukitashi2.Actor
             {
                 foreach (var obj in list)
                 {
-                    if (obj is Space)
+                    if (obj is Space||obj is NextSpace)
                     {
                         continue;
                     }
