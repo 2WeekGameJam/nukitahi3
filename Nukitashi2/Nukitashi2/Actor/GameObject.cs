@@ -76,6 +76,7 @@ namespace Nukitashi2.Actor
         {
             return this.getRectangle().Intersects(otehrObj.getRectangle());
         }
+
         public Direction CheckDirection(GameObject otherObj)
         {
             Point thisCenter = this.getRectangle().Center;
