@@ -21,7 +21,6 @@ namespace Nukitashi2.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("haikei", Vector2.Zero);
             renderer.End();
         }
 
