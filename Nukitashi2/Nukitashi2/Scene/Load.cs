@@ -43,10 +43,7 @@ namespace Nukitashi2.Scene
                 { "haikei", path},
                 { "en", path},
                 { "luiman", path},
-
-                
-                // numberの画像はLoadシーンで使うので、Game1クラスで読み込む
-                //{ "number", path } 
+                { "blockkabe", path},
 
                 //必要に応じて自分で追加
             };

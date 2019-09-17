@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Nukitashi2.Device;
 using Nukitashi2.Utility;
+using Nukitashi2.Actor.Block;
 
 namespace Nukitashi2.Actor
 {
@@ -21,7 +22,8 @@ namespace Nukitashi2.Actor
         private List<GameObject> addBlock(int lineCnt, string[] line)
         {
             Dictionary<string, GameObject> objctDict = new Dictionary<string, GameObject>();
-            //objctDict.Add("0", new Space(Vector2.Zero, gameDevice));
+            objctDict.Add("0", new Space(Vector2.Zero, gameDevice));
+            objctDict.Add("1", new B(Vector2.Zero, gameDevice));
             List<GameObject> workList = new List<GameObject>();
             int colCnt = 0;
             foreach (var s in line)
@@ -61,11 +63,11 @@ namespace Nukitashi2.Actor
             {
                 foreach (var obj in list)
                 {
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
-                    //obj.Updata(gameTime);
+                    if (obj is Space)
+                    {
+                        continue;
+                    }
+                    obj.Updata(gameTime);
                 }
             }
         }
@@ -95,10 +97,10 @@ namespace Nukitashi2.Actor
                         continue;
                     }
                     GameObject obj = mapList[row][col];
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
+                    if (obj is Space)
+                    {
+                        continue;
+                    }
                     if (obj.IsCollision(gameObject))
                     {
                         gameObject.Hit(obj);
@@ -112,11 +114,11 @@ namespace Nukitashi2.Actor
             {
                 foreach (var obj in list)
                 {
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
-                    //obj.Draw(renderer);
+                    if (obj is Space)
+                    {
+                        continue;
+                    }
+                    obj.Draw(renderer);
                 }
             }
         }
