@@ -46,4 +46,8 @@ D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.csproj.Co
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.csproj.CopyComplete
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.exe
 D:\2019_September_2Week\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.pdb
-D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\haikei.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\en.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\haikei.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\load.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\luiman.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\number.xnb

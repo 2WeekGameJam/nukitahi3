@@ -4,6 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/haikei.jpg</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/en.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/haikei.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/load.bmp</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/luiman.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/number.bmp</File>
   </SourceFiles>
 </SourceFileCollection>
