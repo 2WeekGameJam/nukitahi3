@@ -19,12 +19,11 @@ namespace Nukitashi2.Actor
         private IGameObjectMediator mediator;
         private bool gool;
         private Motion motion;
-        public Player(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+        public Player(Vector2 position, GameDevice gameDevice)
                : base("player", position, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
-            this.mediator = mediator;
             gool = false;
             //motion = new Motion();
             //for (int i = 0; i < 2; i++)
@@ -34,7 +33,7 @@ namespace Nukitashi2.Actor
             //motion.Initialize(new Range(0, 1), new CountDownTimer(1.0f));
         }
         public Player(Player other)
-            : this(other.position, other.gameDevice, other.mediator)
+            : this(other.position, other.gameDevice)
         { }
         public override object Clone()
         {

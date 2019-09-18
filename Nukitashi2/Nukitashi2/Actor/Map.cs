@@ -8,6 +8,7 @@ using Nukitashi2.Device;
 using Nukitashi2.Utility;
 using Nukitashi2.Actor.Block;
 using Nukitashi2.Actor.Blocks;
+using Nukitashi2.Scene;
 
 namespace Nukitashi2.Actor
 {
@@ -15,6 +16,7 @@ namespace Nukitashi2.Actor
     {
         private List<List<GameObject>> mapList;
         private GameDevice gameDevice;
+        GamePlay gamePlay;
         public Map(GameDevice gameDevice)
         {
             mapList = new List<List<GameObject>>();
@@ -27,6 +29,8 @@ namespace Nukitashi2.Actor
             objctDict.Add("1", new B(Vector2.Zero, gameDevice));
             objctDict.Add("2", new B2(Vector2.Zero, gameDevice));
             objctDict.Add("3", new NextSpace(Vector2.Zero, gameDevice));
+            objctDict.Add("9", new Enemy(Vector2.Zero, gameDevice));
+
 
             List<GameObject> workList = new List<GameObject>();
             int colCnt = 0;
