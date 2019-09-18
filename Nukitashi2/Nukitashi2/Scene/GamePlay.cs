@@ -68,10 +68,18 @@ namespace Nukitashi2.Scene
         public void Update(GameTime gameTime)
         {
             map.Update(gameTime);
-            if(Input.GetKeyTrigger(Keys.Z))
+            if(Input.GetKeyTrigger(Keys.Z) && player.ReturnHave())
             {
-                shoot = new Shoot(player.GetPosition(), GameDevice.Instance());
+                if (player.CheckFront())
+                {
+                    shoot = new Shoot(player.GetPosition() + new Vector2(37, 0), GameDevice.Instance(), player.CheckFront());
+                }
+                else
+                {
+                    shoot = new Shoot(player.GetPosition() + new Vector2(-13, 0), GameDevice.Instance(), player.CheckFront());
+                }
                 gameObjectManager.Add(shoot);
+                player.DontHave();
             }
             if(player.GetNext())
             {
