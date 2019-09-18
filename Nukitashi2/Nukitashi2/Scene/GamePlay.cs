@@ -16,10 +16,10 @@ namespace Nukitashi2.Scene
         bool isEndFlag;
         Map map;
         Player player;
-        Enemy enemy;
+        //Enemy enemy;
         Shoot shoot;
         GameObjectManager gameObjectManager;
-
+        List<Enemy> enemies;
         public GamePlay()
         {
             isEndFlag = false;
@@ -41,11 +41,17 @@ namespace Nukitashi2.Scene
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
             map.Load("map.csv","./csv/");
+            enemies = new List<Enemy>();
             player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
-            enemy = new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance());
+            enemies.Add(new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance()));
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
-            gameObjectManager.Add(enemy);
+            //gameObjectManager.Add(enemy);
+            enemies = map.EnemyAdd();
+            for(int i=0;i<enemies.Count;i++)
+            {
+                gameObjectManager.Add(enemies[i]);
+            }
             //GameObjectCSVParser parser = new GameObjectCSVParser();
             //var dataList = parser.Parse("");
         }
