@@ -14,7 +14,7 @@ namespace Nukitashi2.Actor
     {
         Vector2 velocity;
         Motion motion;
-        public Enemy(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+        public Enemy(Vector2 position, GameDevice gameDevice)
                : base("EnemyWark", position, 32, 32, gameDevice)
         {
             motion = new Motion();
@@ -25,7 +25,7 @@ namespace Nukitashi2.Actor
             motion.Initialize(new Range(0, 1), new CountDownTimer(1.0f));
         }
         public Enemy(Enemy other)
-           : this(other.position, other.gameDevice, other.mediator)
+           : this(other.position, other.gameDevice)
         { }
         public override object Clone()
         {
