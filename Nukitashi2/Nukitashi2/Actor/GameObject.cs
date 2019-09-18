@@ -54,7 +54,7 @@ namespace Nukitashi2.Actor
 
         public virtual void Draw(Renderer renderer)
         {
-            //renderer.DrawTexture(name, position + gameDevice.GetDisplayMobilify());
+            renderer.DrawTexture(name, position);
         }
         public bool IsDead()
         {
@@ -76,6 +76,7 @@ namespace Nukitashi2.Actor
         {
             return this.getRectangle().Intersects(otehrObj.getRectangle());
         }
+
         public Direction CheckDirection(GameObject otherObj)
         {
             Point thisCenter = this.getRectangle().Center;
