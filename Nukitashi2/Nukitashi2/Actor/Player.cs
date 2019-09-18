@@ -16,15 +16,14 @@ namespace Nukitashi2.Actor
     {
         private Vector2 velocity;
         private bool isJump;
-        private IGameObjectMediator mediator;
         private bool gool;
         private Motion motion;
-        public Player(Vector2 position, GameDevice gameDevice, IGameObjectMediator mediator)
+
+        public Player(Vector2 position, GameDevice gameDevice)
                : base("player", position, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
-            this.mediator = mediator;
             gool = false;
             //motion = new Motion();
             //for (int i = 0; i < 2; i++)
@@ -33,13 +32,16 @@ namespace Nukitashi2.Actor
             //}
             //motion.Initialize(new Range(0, 1), new CountDownTimer(1.0f));
         }
+
         public Player(Player other)
-            : this(other.position, other.gameDevice, other.mediator)
+            : this(other.position, other.gameDevice)
         { }
+
         public override object Clone()
         {
             return new Player(this);
         }
+
         public override void Hit(GameObject gameObject)
         {
             if (gameObject is B||gameObject is B2)
@@ -49,6 +51,7 @@ namespace Nukitashi2.Actor
             if (gameObject is NextSpace)
                 gool = true;
         }
+
         public override void Updata(GameTime gameTime)
         {
             if ((isJump == false) &&
@@ -77,6 +80,7 @@ namespace Nukitashi2.Actor
             position = position + velocity;
             //UpdateMotion();
         }
+
         private void hitBlock(GameObject gameObject)
         {
             Direction dir = CheckDirection(gameObject);
@@ -106,10 +110,12 @@ namespace Nukitashi2.Actor
                 }
             }
         }
+
         public override void Draw(Renderer renderer)
         {
             renderer.DrawTexture(name, position/*, motion.DrawingRange()*/);
         }
+
         //private void UpdateMotion()
         //{
         //    Vector2 velocity = Input.Velocity();
@@ -124,6 +130,7 @@ namespace Nukitashi2.Actor
         //        motion.Initialize(new Range(1, 1), new CountDownTimer());
         //    }
         //}
+
         public bool GetNext()
         {
             return gool;
