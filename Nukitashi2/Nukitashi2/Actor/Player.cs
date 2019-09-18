@@ -16,15 +16,19 @@ namespace Nukitashi2.Actor
     {
         private Vector2 velocity;
         private bool isJump;
-        private bool gool;
+        private bool goal;
         private Motion motion;
+        private bool iHave;//剣を持っているか
+        private bool frontR;//右を向いているか
 
         public Player(Vector2 position, GameDevice gameDevice)
                : base("player", position, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
-            gool = false;
+            goal = false;
+            iHave = true;
+            frontR = true;
             //motion = new Motion();
             //for (int i = 0; i < 2; i++)
             //{
@@ -48,8 +52,12 @@ namespace Nukitashi2.Actor
             {
                 hitBlock(gameObject);
             }
+            if(gameObject is Shoot)
+            {
+                iHave = true;
+            }
             if (gameObject is NextSpace)
-                gool = true;
+                goal = true;
         }
 
         public override void Updata(GameTime gameTime)
@@ -67,16 +75,28 @@ namespace Nukitashi2.Actor
                 velocity.Y += 0.2f;
                 velocity.Y = (velocity.Y > 16.0f) ? (16.0f) : (velocity.Y);
             }
+
             float speed = 4.0f;
             //if(Input.GetKeyTrigger(Keys.X))
             //{
             //    isDeadFlag = true;
             //}
             velocity.X = Input.Velocity().X * speed;
+
+            if(velocity.X >0.0f)
+            {
+                frontR = true;
+            }
+            if (velocity.X < 0.0f)
+            {
+                frontR = false;
+            }
+
             if (position.X <= 0&&velocity.X<=0.1 || position.X >= Screen.Width - width&&velocity.X>=-0.1)
             {
                 velocity.X = 0;
             }
+
             position = position + velocity;
             //UpdateMotion();
         }
@@ -133,7 +153,22 @@ namespace Nukitashi2.Actor
 
         public bool GetNext()
         {
-            return gool;
+            return goal;
+        }
+
+        public void DontHave()
+        {
+            iHave = false;
+        }
+
+        public bool ReturnHave()
+        {
+            return iHave;
+        }
+
+        public bool CheckFront()
+        {
+            return frontR;
         }
     }
 }

@@ -41,8 +41,8 @@ namespace Nukitashi2.Scene
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
             map.Load("map.csv","./csv/");
-            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance(), gameObjectManager);
-            enemy = new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance(), gameObjectManager);
+            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
+            enemy = new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance());
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
             gameObjectManager.Add(enemy);
@@ -68,10 +68,18 @@ namespace Nukitashi2.Scene
         public void Update(GameTime gameTime)
         {
             map.Update(gameTime);
-            if(Input.GetKeyTrigger(Keys.Z))
+            if(Input.GetKeyTrigger(Keys.Z) && player.ReturnHave())
             {
-                shoot = new Shoot(player.GetPosition(), GameDevice.Instance());
+                if (player.CheckFront())
+                {
+                    shoot = new Shoot(player.GetPosition() + new Vector2(37, 0), GameDevice.Instance(), player.CheckFront());
+                }
+                else
+                {
+                    shoot = new Shoot(player.GetPosition() + new Vector2(-13, 0), GameDevice.Instance(), player.CheckFront());
+                }
                 gameObjectManager.Add(shoot);
+                player.DontHave();
             }
             if(player.GetNext())
             {
