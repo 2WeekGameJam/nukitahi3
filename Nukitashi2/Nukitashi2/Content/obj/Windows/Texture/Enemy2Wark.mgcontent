@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Enemy2Wark.png</SourceFile>
-  <SourceTime>2019-09-17T15:35:44.5259158+09:00</SourceTime>
-  <DestFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Enemy2Wark.xnb</DestFile>
-  <DestTime>2019-09-17T18:29:44.6895504+09:00</DestTime>
+  <SourceFile>C:/Users/K018A1928/Desktop/作業フォルダ/Nukitashi2/Nukitashi2/Content/Texture/Enemy2Wark.png</SourceFile>
+  <SourceTime>2019-09-18T12:56:11.7858572+09:00</SourceTime>
+  <DestFile>C:/Users/K018A1928/Desktop/作業フォルダ/Nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Enemy2Wark.xnb</DestFile>
+  <DestTime>2019-09-18T13:58:54.6356796+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
