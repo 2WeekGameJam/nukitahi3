@@ -41,8 +41,8 @@ namespace Nukitashi2.Scene
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
             map.Load("map.csv","./csv/");
-            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance(), gameObjectManager);
-            enemy = new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance(), gameObjectManager);
+            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
+            enemy = new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance());
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
             gameObjectManager.Add(enemy);

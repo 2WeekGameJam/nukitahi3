@@ -15,9 +15,11 @@ namespace Nukitashi2.Actor
     {
         private List<List<GameObject>> mapList;
         private GameDevice gameDevice;
+        List<Enemy> enemys;
         public Map(GameDevice gameDevice)
         {
             mapList = new List<List<GameObject>>();
+            enemys = new List<Enemy>();
             this.gameDevice = gameDevice;
         }
         private List<GameObject> addBlock(int lineCnt, string[] line)
@@ -27,6 +29,7 @@ namespace Nukitashi2.Actor
             objctDict.Add("1", new B(Vector2.Zero, gameDevice));
             objctDict.Add("2", new B2(Vector2.Zero, gameDevice));
             objctDict.Add("3", new NextSpace(Vector2.Zero, gameDevice));
+            objctDict.Add("9", new Enemy(Vector2.Zero, gameDevice));
 
             List<GameObject> workList = new List<GameObject>();
             int colCnt = 0;
@@ -35,6 +38,10 @@ namespace Nukitashi2.Actor
                 try
                 {
                     GameObject work = (GameObject)objctDict[s].Clone();
+                    if(work is Enemy)
+                    {
+                        enemys.Add((Enemy)work);
+                    }
                     work.SetPosition(new Vector2(colCnt * work.GetHeight(), lineCnt * work.GetWidth()));
                     workList.Add(work);
                 }
@@ -50,7 +57,6 @@ namespace Nukitashi2.Actor
         {
             CSVReader csvRreader = new CSVReader();
             csvRreader.Read(filename, path);
-
             var data = csvRreader.GetData();
             for (int lineCnt = 0; lineCnt < data.Count(); lineCnt++)
             {
@@ -129,6 +135,10 @@ namespace Nukitashi2.Actor
         public int GetMapX()
         {
             return mapList[0].Count;
+        }
+        public List<Enemy> EnemyAdd()
+        {
+            return enemys;
         }
     }
 }
