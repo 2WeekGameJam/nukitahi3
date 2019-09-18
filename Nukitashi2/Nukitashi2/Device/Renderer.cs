@@ -200,6 +200,43 @@ namespace Nukitashi2.Device
                 );
         }
 
+        //追加
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="positoin">位置</param>
+        /// <param name="rect">切り出し範囲</param>
+        /// <param name="rotate">回転角度</param>
+        /// <param name="rotatePosition">回転軸位置</param>
+        /// <param name="scale">拡大縮小</param>
+        /// <param name="effects">表示反転効果</param>
+        /// <param name="depth">スプライト深度</param>
+        /// <param name="alpha">透明値</param>
+        public void DrawTexture(
+            string assetName,
+            Vector2 positoin,
+            Rectangle? rect, //nullを受け入れられるよう「？」で
+            float rotate,
+            Vector2 rotatePosition,
+            float scale,
+            SpriteEffects effects = SpriteEffects.None,
+            float depth = 0.0f,
+            float alpha = 1.0f)
+        {
+            spriteBatch.Draw(
+                textures[assetName],//テクスチャ
+                positoin,           //位置
+                rect,               //切り取り範囲
+                Color.White * alpha,//透明値
+                rotate,             //回転角度
+                rotatePosition,     //回転軸
+                scale,              //拡大縮小
+                effects,            //表示反転効果
+                depth               //スプライト深度
+                );
+        }
+        //ここまで
 
         /// <summary>
         /// 画像の描画
