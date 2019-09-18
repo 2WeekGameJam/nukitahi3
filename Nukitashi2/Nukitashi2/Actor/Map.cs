@@ -38,12 +38,12 @@ namespace Nukitashi2.Actor
                 try
                 {
                     GameObject work = (GameObject)objctDict[s].Clone();
+                    work.SetPosition(new Vector2(colCnt * work.GetHeight(), lineCnt * work.GetWidth()));
                     if(work is Enemy)
                     {
                         enemys.Add((Enemy)work);
                     }
-                    work.SetPosition(new Vector2(colCnt * work.GetHeight(), lineCnt * work.GetWidth()));
-                    workList.Add(work);
+                       workList.Add(work);
                 }
                 catch (Exception e)
                 {
