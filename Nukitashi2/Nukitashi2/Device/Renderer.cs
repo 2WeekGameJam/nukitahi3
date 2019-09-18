@@ -238,6 +238,28 @@ namespace Nukitashi2.Device
         }
         //ここまで
 
+        //追加2
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="positoin">位置</param>
+        /// <param name="rect">切り出し範囲</param>
+        /// <param name="scale">拡大縮小</param>
+        /// <param name="effect">表示向きが正かどうか(trueなら正)</param>
+        public void DrawTexture(string assetName,Vector2 position, Rectangle rect,Vector2 scale,bool effect, float alpha = 1.0f)
+        {
+            //デバッグモードの時のみ、画像描画前のアセット名チェック
+            Debug.Assert(
+                textures.ContainsKey(assetName),
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
+
+            if (!effect) spriteBatch.Draw(textures[assetName], position, rect, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0.0f);
+            else spriteBatch.Draw(textures[assetName], position, rect, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+        }
+        //ここまで2
+
         /// <summary>
         /// 画像の描画
         /// </summary>
