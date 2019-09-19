@@ -46,10 +46,18 @@ namespace Nukitashi2.Scene
                 { "blockkabe", path},
                 { "blockkusa", path},
                 { "player", path},
+                { "EnemyStand", path},
                 { "EnemyWark", path},
+                { "EnemyAttack", path},
                 { "Enemy2Wark", path},
+                { "Enemy3Stand", path},
+                { "Enemy3Attack", path},
+                { "PlayerStand", path},
+                { "PlayerRun", path},
+                { "PlayerJump", path},
+                { "PlayerAttack", path},
+                { "weapon", path},
                 { "pushspace", path},
-
                 //必要に応じて自分で追加
             };
 
