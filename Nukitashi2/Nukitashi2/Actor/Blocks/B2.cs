@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor.Blocks
     class B2 : GameObject
     {
         public B2(Vector2 pos, GameDevice gameDevice)
-            : base("blockkabe", pos, 32, 32, gameDevice)
+            : base("blockkabe", pos, 64, 64, gameDevice)
         { }
         public B2(B2 other)
             : this(other.position, other.gameDevice)

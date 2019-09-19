@@ -16,7 +16,6 @@ namespace Nukitashi2.Scene
         bool isEndFlag;
         Map map;
         Player player;
-        //Enemy enemy;
         Shoot shoot;
         GameObjectManager gameObjectManager;
         List<Enemy> enemies;
@@ -43,17 +42,13 @@ namespace Nukitashi2.Scene
             map.Load("map.csv","./csv/");
             enemies = new List<Enemy>();
             player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
-            enemies.Add(new Enemy(new Vector2(32 * 20, 32 * 10), GameDevice.Instance()));
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
-            //gameObjectManager.Add(enemy);
             enemies = map.EnemyAdd();
             for(int i=0;i<enemies.Count;i++)
             {
                 gameObjectManager.Add(enemies[i]);
             }
-            //GameObjectCSVParser parser = new GameObjectCSVParser();
-            //var dataList = parser.Parse("");
         }
 
         public bool IsEnd()
@@ -78,7 +73,7 @@ namespace Nukitashi2.Scene
             {
                 if (player.CheckFront())
                 {
-                    shoot = new Shoot(player.GetPosition() + new Vector2(37, 0), GameDevice.Instance(), player.CheckFront());
+                    shoot = new Shoot(player.GetPosition() + new Vector2(69, 0), GameDevice.Instance(), player.CheckFront());
                 }
                 else
                 {
@@ -91,6 +86,15 @@ namespace Nukitashi2.Scene
             {
                 isEndFlag = true;
             }
+
+            if (enemies.Count <= 0)
+                isEndFlag = true;
+
+            if (Input.GetKeyTrigger(Keys.X))
+            {
+                enemies.RemoveAt(0);
+            }
+
 
             gameObjectManager.Update(gameTime);
         }

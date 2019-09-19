@@ -54,7 +54,7 @@ namespace Nukitashi2.Utility
         //        (data.Count == 3),
         //        "CSVデータを確認してください");
         //    return new Block(
-        //         new Vector2(float.Parse(data[1]), float.Parse(data[2])) * 32,
+        //         new Vector2(float.Parse(data[1]), float.Parse(data[2])) * 64,
         //         GameDevice.Instance());
         //}
     }

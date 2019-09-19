@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor.Blocks
     class NextSpace : GameObject
     {
         public NextSpace(Vector2 position, GameDevice gameDevice)
-             : base("", position, 32, 32, gameDevice)
+             : base("", position, 64, 64, gameDevice)
         {
             
         }

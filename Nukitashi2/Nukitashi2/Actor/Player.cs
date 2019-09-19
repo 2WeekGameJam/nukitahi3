@@ -22,7 +22,7 @@ namespace Nukitashi2.Actor
         private bool frontR;//右を向いているか
 
         public Player(Vector2 position, GameDevice gameDevice)
-               : base("player", position, 32, 32, gameDevice)
+               : base("PlayerStand", position, 32, 64, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
@@ -106,7 +106,7 @@ namespace Nukitashi2.Actor
             Direction dir = CheckDirection(gameObject);
             if (dir == Direction.Top)
             {
-                if (position.Y > 0.0f)
+                if (velocity.Y > 0.0f)
                 {
                     position.Y = gameObject.getRectangle().Top - height;
                     velocity.Y = 0.0f;

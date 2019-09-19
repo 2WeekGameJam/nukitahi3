@@ -20,7 +20,6 @@ namespace Nukitashi2.Actor
         protected int height;
         protected bool isDeadFlag;
         protected GameDevice gameDevice;
-        protected GameObjectManager mediator;
 
         protected GameObjectID id;
 

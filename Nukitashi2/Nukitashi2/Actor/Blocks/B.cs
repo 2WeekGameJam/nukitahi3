@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor
     class B : GameObject
     {
         public B(Vector2 pos,GameDevice gameDevice)
-            :base("blockkusa", pos, 32, 32, gameDevice)
+            :base("blockkusa", pos, 64, 64, gameDevice)
         { }
         public B(B other)
             : this(other.position, other.gameDevice)
