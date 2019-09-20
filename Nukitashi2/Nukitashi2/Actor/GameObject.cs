@@ -20,7 +20,6 @@ namespace Nukitashi2.Actor
         protected int height;
         protected bool isDeadFlag;
         protected GameDevice gameDevice;
-        protected GameObjectManager mediator;
 
         protected GameObjectID id;
 
@@ -74,12 +73,12 @@ namespace Nukitashi2.Actor
 
         public bool IsCollision(GameObject otehrObj)
         {
-            return this.getRectangle().Intersects(otehrObj.getRectangle());
+            return getRectangle().Intersects(otehrObj.getRectangle());
         }
 
         public Direction CheckDirection(GameObject otherObj)
         {
-            Point thisCenter = this.getRectangle().Center;
+            Point thisCenter = getRectangle().Center;
             Point otherCenter = otherObj.getRectangle().Center;
             Vector2 dir = new Vector2(thisCenter.X, thisCenter.Y) -
                 new Vector2(otherCenter.X, otherCenter.Y);

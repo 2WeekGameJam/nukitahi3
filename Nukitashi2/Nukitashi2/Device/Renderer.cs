@@ -311,12 +311,12 @@ namespace Nukitashi2.Device
             //数字を文字列化し、1文字ずつ取り出す
             foreach (var n in number.ToString())
             {
-                //数字のテクスチャが数字1つにつき幅32高さ32
+                //数字のテクスチャが数字1つにつき幅64高さ64
                 //文字と文字を引き算し、整数値を取得している
                 spriteBatch.Draw(
                     textures[assetName],
                     position,
-                    new Rectangle((n - '0') * width, 0, width, 32),
+                    new Rectangle((n - '0') * width, 0, width, 64),
                     Color.White);
 
                 //1文字描画したら1桁分右にずらす

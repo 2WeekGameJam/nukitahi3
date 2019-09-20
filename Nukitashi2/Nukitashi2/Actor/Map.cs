@@ -43,7 +43,8 @@ namespace Nukitashi2.Actor
                     {
                         enemys.Add((Enemy)work);
                     }
-                       workList.Add(work);
+                    else
+                        workList.Add(work);
                 }
                 catch (Exception e)
                 {
@@ -84,8 +85,8 @@ namespace Nukitashi2.Actor
         public void Hit(GameObject gameObject)
         {
             Point work = gameObject.getRectangle().Location;
-            int x = work.X / 32;
-            int y = work.Y / 32;
+            int x = work.X / 128;
+            int y = work.Y / 128;
             if (x < 1)
             {
                 x = 1;

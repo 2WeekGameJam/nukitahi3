@@ -8,28 +8,27 @@ using Nukitashi2.Device;
 
 namespace Nukitashi2.Actor.Blocks
 {
-    class NextSpace : GameObject
+    class SpeedUP : GameObject
     {
-        public NextSpace(Vector2 position, GameDevice gameDevice)
-             : base("", position, 64, 64, gameDevice)
-        {
-            
-        }
-        public NextSpace(NextSpace other)
+        public SpeedUP(Vector2 pos, GameDevice gameDevice)
+           : base("blockkabe", pos, 128, 128, gameDevice)
+        { }
+        public SpeedUP(SpeedUP other)
             : this(other.position, other.gameDevice)
-        {  }
+        { }
         public override object Clone()
         {
-            return new NextSpace(this);
+            return new SpeedUP(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
+            throw new NotImplementedException();
         }
 
         public override void Updata(GameTime gameTime)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

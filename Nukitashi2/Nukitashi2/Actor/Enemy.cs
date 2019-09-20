@@ -15,7 +15,7 @@ namespace Nukitashi2.Actor
         Vector2 velocity;
         Motion motion;
         public Enemy(Vector2 position, GameDevice gameDevice)
-               : base("EnemyWark", position, 32, 32, gameDevice)
+               : base("EnemyWark", position, 64, 64, gameDevice)
         {
             motion = new Motion();
             for (int i = 0; i < 2; i++)

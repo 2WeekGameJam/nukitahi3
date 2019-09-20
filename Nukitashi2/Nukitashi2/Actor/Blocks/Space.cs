@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor.Block
     class Space : GameObject
     {
         public Space(Vector2 position, GameDevice gameDevice)
-            : base("", position, 32, 32, gameDevice)
+            : base("", position, 64, 64, gameDevice)
         {
         }
         public Space(Space other)

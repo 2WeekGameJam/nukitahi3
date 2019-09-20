@@ -8,23 +8,22 @@ using Nukitashi2.Device;
 
 namespace Nukitashi2.Actor.Blocks
 {
-    class NextSpace : GameObject
+    class Weapon : GameObject
     {
-        public NextSpace(Vector2 position, GameDevice gameDevice)
-             : base("", position, 64, 64, gameDevice)
-        {
-            
-        }
-        public NextSpace(NextSpace other)
+        public Weapon(Vector2 pos, GameDevice gameDevice)
+           : base("blockkabe", pos, 128, 128, gameDevice)
+        { }
+        public Weapon(Weapon other)
             : this(other.position, other.gameDevice)
-        {  }
+        { }
         public override object Clone()
         {
-            return new NextSpace(this);
+            return new Weapon(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
+            
         }
 
         public override void Updata(GameTime gameTime)

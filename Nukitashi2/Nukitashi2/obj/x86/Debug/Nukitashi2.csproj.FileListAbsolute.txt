@@ -103,3 +103,12 @@ C:\Users\K018A1928\Desktop\作業フォルダ\Nukitashi2\Nukitashi2\obj\x86\Debu
 C:\Users\K018A1928\Desktop\作業フォルダ\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.csproj.CopyComplete
 C:\Users\K018A1928\Desktop\作業フォルダ\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.exe
 C:\Users\K018A1928\Desktop\作業フォルダ\Nukitashi2\Nukitashi2\obj\x86\Debug\Nukitashi2.pdb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\Enemy3Attack.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\Enemy3Stand.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\EnemyAttack.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\EnemyStand.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\PlayerAttack.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\PlayerJump.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\PlayerRun.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\PlayerStand.xnb
+D:\2019_September_2Week\Nukitashi2\Nukitashi2\bin\Windows\x86\Debug\Content\Texture\weapon.xnb
