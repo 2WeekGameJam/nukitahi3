@@ -4,25 +4,33 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/en.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/haikei.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/load.bmp</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/luiman.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/number.bmp</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Blockkabe.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Blockkusa.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/player.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/EnemyWark.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Enemy2Wark.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/pushspace.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/EnemyAttack.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/EnemyStand.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/PlayerAttack.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/PlayerJump.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/PlayerRun.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/PlayerStand.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/weapon.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Enemy3Attack.png</File>
-    <File>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Enemy3Stand.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/en.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/haikei.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/load.bmp</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/luiman.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/number.bmp</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Blockkabe.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Blockkusa.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/player.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/EnemyWark.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Enemy2Wark.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/pushspace.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/EnemyAttack.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/EnemyStand.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/PlayerAttack.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/PlayerJump.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/PlayerRun.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/PlayerStand.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/weapon.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Enemy3Attack.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Enemy3Stand.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Socks.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Stage1.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Stage2.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Title.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Weapons_store.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Boss.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Home.png</File>
+    <File>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Title_Boss.png</File>
   </SourceFiles>
 </SourceFileCollection>

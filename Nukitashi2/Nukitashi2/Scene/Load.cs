@@ -58,6 +58,14 @@ namespace Nukitashi2.Scene
                 { "PlayerAttack", path},
                 { "weapon", path},
                 { "pushspace", path},
+                { "Title_Boss", path},
+                { "Home", path},
+                { "Stage1", path},
+                { "Stage2", path},
+                { "Title", path},
+                { "Socks", path},
+                { "Weapons_store", path},
+                { "Boss", path},
                 //必要に応じて自分で追加
             };
 
