@@ -70,31 +70,30 @@ namespace Nukitashi2.Scene
         public void Update(GameTime gameTime)
         {
             motion.Update(gameTime);
-            Motion();
+            Do();
             if(Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
             }
         }
 
-        public void Motion()
+        public void Do()
         {
-            Calculation(count);
-            if (count> 0) return;
+            Calculation();
+            if (!(count <= 0)) return;
             switch(downFlag)
             {
                 case true:downFlag = false; count = 10; break;
                 case false:downFlag = true; count = 10; break;
-                default:downFlag = false;return;
             }
         }
-        public void Calculation(int x)
+        public void Calculation()
         {
             count--;
             if (downFlag)
                 position -= new Vector2(0, 1) * speed;
             else
-                position += new Vector2(0, -1) * speed;
+                position += new Vector2(0, 1) * speed;
         }
     }
 }
