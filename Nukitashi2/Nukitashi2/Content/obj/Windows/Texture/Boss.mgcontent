@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Boss.png</SourceFile>
-  <SourceTime>2019-09-20T15:44:15.0282569+09:00</SourceTime>
+  <SourceTime>2019-09-20T16:01:40.1039303+09:00</SourceTime>
   <DestFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Boss.xnb</DestFile>
-  <DestTime>2019-09-20T15:48:00.9313439+09:00</DestTime>
+  <DestTime>2019-09-20T16:03:58.9081161+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

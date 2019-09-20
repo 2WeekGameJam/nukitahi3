@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor.Blocks
     class SpeedUP : GameObject
     {
         public SpeedUP(Vector2 pos, GameDevice gameDevice)
-           : base("", pos, 128, 128, gameDevice)
+           : base("Socks", pos, 128, 128, gameDevice)
         { }
         public SpeedUP(SpeedUP other)
             : this(other.position, other.gameDevice)

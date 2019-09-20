@@ -11,7 +11,7 @@ namespace Nukitashi2.Actor.Blocks
     class Weapon : GameObject
     {
         public Weapon(Vector2 pos, GameDevice gameDevice)
-           : base("", pos, 128, 128, gameDevice)
+           : base("Weapons_store", pos, 128, 128, gameDevice)
         { }
         public Weapon(Weapon other)
             : this(other.position, other.gameDevice)

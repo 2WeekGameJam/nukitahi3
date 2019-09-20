@@ -29,6 +29,8 @@ namespace Nukitashi2.Actor
             objctDict.Add("1", new B(Vector2.Zero, gameDevice));
             objctDict.Add("2", new B2(Vector2.Zero, gameDevice));
             objctDict.Add("3", new NextSpace(Vector2.Zero, gameDevice));
+            objctDict.Add("4", new SpeedUP(Vector2.Zero, gameDevice));
+            objctDict.Add("5", new Weapon(Vector2.Zero, gameDevice));
             objctDict.Add("9", new Enemy(Vector2.Zero, gameDevice));
 
             List<GameObject> workList = new List<GameObject>();
