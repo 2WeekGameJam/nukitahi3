@@ -80,17 +80,21 @@ namespace Nukitashi2.Scene
         public void Motion()
         {
             Calculation(count);
-            if (count != 0) return;
+            if (count> 0) return;
             switch(downFlag)
             {
-                case true:downFlag = false; count = -10; break;
+                case true:downFlag = false; count = 10; break;
                 case false:downFlag = true; count = 10; break;
                 default:downFlag = false;return;
             }
         }
         public void Calculation(int x)
         {
-            position += new Vector2(0, count) * speed;
+            count--;
+            if (downFlag)
+                position -= new Vector2(0, 1) * speed;
+            else
+                position += new Vector2(0, -1) * speed;
         }
     }
 }
