@@ -7,16 +7,25 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nukitashi2.Device;
 using Nukitashi2.Def;
+using Nukitashi2.Utility;
 
 namespace Nukitashi2.Scene
 {
     class Title : IScene
     {
         private bool isEndFlag;
+        private Vector2 position;
+        private bool downFlag;
+        private Motion motion;
+        private int scWidth;
+        private int scHeight;
+        private int count = 10;
+        private int speed = 3;
 
         public Title()
         {
             isEndFlag = false;
+            
         }
 
         public void Draw(Renderer renderer)
@@ -24,12 +33,23 @@ namespace Nukitashi2.Scene
             renderer.Begin();
             renderer.DrawTexture("haikei", Vector2.Zero);
             renderer.DrawTexture("pushspace", new Vector2(Screen.Width / 2, Screen.Height / 1.5f));
+            renderer.DrawTexture("Title_Boss", position, motion.DrawingRange());
             renderer.End();
         }
 
         public void Initialize()
         {
             isEndFlag = false;
+            scWidth = Def.Screen.Width;
+            scHeight = Def.Screen.Height;
+            position = new Vector2(scWidth / 2 + scWidth / 4, scHeight / 2 + scHeight / 4);
+            downFlag = true;
+            motion = new Motion();
+            for (int i = 0; i < 6; i++) 
+            {
+                motion.Add(i, new Rectangle(128 * i, 128 * i, 128, 128));
+            }
+            motion.Initialize(new Range(0, 5), new CountDownTimer(0.2f));
         }
 
         public bool IsEnd()
@@ -49,10 +69,28 @@ namespace Nukitashi2.Scene
 
         public void Update(GameTime gameTime)
         {
+            motion.Update(gameTime);
+            Motion();
             if(Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
             }
+        }
+
+        public void Motion()
+        {
+            Calculation(count);
+            if (count != 0) return;
+            switch(downFlag)
+            {
+                case true:downFlag = false; count = -10; break;
+                case false:downFlag = true; count = 10; break;
+                default:downFlag = false;return;
+            }
+        }
+        public void Calculation(int x)
+        {
+            position += new Vector2(0, count) * speed;
         }
     }
 }
