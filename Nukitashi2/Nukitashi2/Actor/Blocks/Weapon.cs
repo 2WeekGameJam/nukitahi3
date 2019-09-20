@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Nukitashi2.Device;
 
-namespace Nukitashi2.Actor
+namespace Nukitashi2.Actor.Blocks
 {
-    class B : GameObject
+    class Weapon : GameObject
     {
-        public B(Vector2 pos,GameDevice gameDevice)
-            :base("blockkusa", pos, 128, 128, gameDevice)
+        public Weapon(Vector2 pos, GameDevice gameDevice)
+           : base("blockkabe", pos, 128, 128, gameDevice)
         { }
-        public B(B other)
+        public Weapon(Weapon other)
             : this(other.position, other.gameDevice)
         { }
         public override object Clone()
         {
-            return new B(this);
+            return new Weapon(this);
         }
 
         public override void Hit(GameObject gameObject)

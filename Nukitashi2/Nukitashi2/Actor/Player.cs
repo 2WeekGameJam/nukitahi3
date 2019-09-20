@@ -20,9 +20,11 @@ namespace Nukitashi2.Actor
         private Motion motion;
         private bool iHave;//剣を持っているか
         private bool frontR;//右を向いているか
+        float speed;
+        int weapon;
 
         public Player(Vector2 position, GameDevice gameDevice)
-               : base("PlayerStand", position, 32, 64, gameDevice)
+               : base("PlayerStand", position, 64, 128, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;

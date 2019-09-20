@@ -85,8 +85,8 @@ namespace Nukitashi2.Actor
         public void Hit(GameObject gameObject)
         {
             Point work = gameObject.getRectangle().Location;
-            int x = work.X / 64;
-            int y = work.Y / 64;
+            int x = work.X / 128;
+            int y = work.Y / 128;
             if (x < 1)
             {
                 x = 1;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Blockkabe.png</SourceFile>
+  <SourceFile>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/Texture/Blockkabe.png</SourceFile>
   <SourceTime>2019-01-09T11:30:04+09:00</SourceTime>
-  <DestFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Blockkabe.xnb</DestFile>
-  <DestTime>2019-09-18T15:08:55.3748667+09:00</DestTime>
+  <DestFile>D:/2019_September_2Week/nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Blockkabe.xnb</DestFile>
+  <DestTime>2019-09-20T13:23:31.4073767+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

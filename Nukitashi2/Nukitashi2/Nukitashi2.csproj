@@ -45,6 +45,8 @@
     <Compile Include="Actor\Blocks\B2.cs" />
     <Compile Include="Actor\Blocks\NextSpace.cs" />
     <Compile Include="Actor\Blocks\Space.cs" />
+    <Compile Include="Actor\Blocks\SpeedUP.cs" />
+    <Compile Include="Actor\Blocks\Weapon.cs" />
     <Compile Include="Actor\Enemy.cs" />
     <Compile Include="Actor\GameObject.cs" />
     <Compile Include="Actor\GameObjectID.cs" />
