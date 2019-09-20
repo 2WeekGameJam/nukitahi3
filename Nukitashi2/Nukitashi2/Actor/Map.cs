@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Nukitashi2.Device;
 using Nukitashi2.Utility;
+using Nukitashi2.Actor.Block;
+using Nukitashi2.Actor.Blocks;
 
 namespace Nukitashi2.Actor
 {
@@ -13,15 +15,22 @@ namespace Nukitashi2.Actor
     {
         private List<List<GameObject>> mapList;
         private GameDevice gameDevice;
+        List<Enemy> enemys;
         public Map(GameDevice gameDevice)
         {
             mapList = new List<List<GameObject>>();
+            enemys = new List<Enemy>();
             this.gameDevice = gameDevice;
         }
         private List<GameObject> addBlock(int lineCnt, string[] line)
         {
             Dictionary<string, GameObject> objctDict = new Dictionary<string, GameObject>();
-            //objctDict.Add("0", new Space(Vector2.Zero, gameDevice));
+            objctDict.Add("0", new Space(Vector2.Zero, gameDevice));
+            objctDict.Add("1", new B(Vector2.Zero, gameDevice));
+            objctDict.Add("2", new B2(Vector2.Zero, gameDevice));
+            objctDict.Add("3", new NextSpace(Vector2.Zero, gameDevice));
+            objctDict.Add("9", new Enemy(Vector2.Zero, gameDevice));
+
             List<GameObject> workList = new List<GameObject>();
             int colCnt = 0;
             foreach (var s in line)
@@ -30,7 +39,12 @@ namespace Nukitashi2.Actor
                 {
                     GameObject work = (GameObject)objctDict[s].Clone();
                     work.SetPosition(new Vector2(colCnt * work.GetHeight(), lineCnt * work.GetWidth()));
-                    workList.Add(work);
+                    if(work is Enemy)
+                    {
+                        enemys.Add((Enemy)work);
+                    }
+                    else
+                        workList.Add(work);
                 }
                 catch (Exception e)
                 {
@@ -44,7 +58,6 @@ namespace Nukitashi2.Actor
         {
             CSVReader csvRreader = new CSVReader();
             csvRreader.Read(filename, path);
-
             var data = csvRreader.GetData();
             for (int lineCnt = 0; lineCnt < data.Count(); lineCnt++)
             {
@@ -61,19 +74,19 @@ namespace Nukitashi2.Actor
             {
                 foreach (var obj in list)
                 {
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
-                    //obj.Updata(gameTime);
+                    if (obj is Space)
+                    {
+                        continue;
+                    }
+                    obj.Updata(gameTime);
                 }
             }
         }
         public void Hit(GameObject gameObject)
         {
             Point work = gameObject.getRectangle().Location;
-            int x = work.X / 32;
-            int y = work.Y / 32;
+            int x = work.X / 128;
+            int y = work.Y / 128;
             if (x < 1)
             {
                 x = 1;
@@ -95,10 +108,10 @@ namespace Nukitashi2.Actor
                         continue;
                     }
                     GameObject obj = mapList[row][col];
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
+                    if (obj is Space)
+                    {
+                        continue;
+                    }
                     if (obj.IsCollision(gameObject))
                     {
                         gameObject.Hit(obj);
@@ -112,17 +125,21 @@ namespace Nukitashi2.Actor
             {
                 foreach (var obj in list)
                 {
-                    //if (obj is Space)
-                    //{
-                    //    continue;
-                    //}
-                    //obj.Draw(renderer);
+                    if (obj is Space||obj is NextSpace)
+                    {
+                        continue;
+                    }
+                    obj.Draw(renderer);
                 }
             }
         }
         public int GetMapX()
         {
             return mapList[0].Count;
+        }
+        public List<Enemy> EnemyAdd()
+        {
+            return enemys;
         }
     }
 }

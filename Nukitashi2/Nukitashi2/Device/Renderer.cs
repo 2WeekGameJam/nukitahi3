@@ -11,14 +11,20 @@ using System.Diagnostics;//Assert用
 
 namespace Nukitashi2.Device
 {
+    /// <summary>
+    /// 描画管理クラス
+    /// </summary>
     class Renderer
     {
+        #region フィールド
         private ContentManager contentManager; //コンテンツ管理者
         private GraphicsDevice graphicsDevice; //グラフィック機器
         private SpriteBatch spriteBatch; //スプライト一括描画用オブジェクト
+        private RenderTarget2D target2D; //2D用レンダーターゲット
 
         //複数画像管理用変数の宣言と生成
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+        #endregion フィールド
 
         /// <summary>
         /// コンストラクタ
@@ -32,11 +38,7 @@ namespace Nukitashi2.Device
             spriteBatch = new SpriteBatch(graphicsDevice);
         }
 
-        internal void DrawNumber(string v1, Vector2 vector2, string gameTime, int v2)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region 画像の読み込み
         /// <summary>
         /// 画像の読み込み
         /// </summary>
@@ -60,6 +62,31 @@ namespace Nukitashi2.Device
         }
 
         /// <summary>
+        /// 画像の読み込み（画像オブジェクト版）
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="texture">２D画像オブジェクト</param>
+        public void LoadContent(string assetName, Texture2D texture)
+        {
+            //すでにキー（assetName：アセット名）が登録されているとき
+            if (textures.ContainsKey(assetName))
+            {
+#if DEBUG //DEBUGモードの時のみ下記エラー分をコンソールへ表示
+                Console.WriteLine(
+                    assetName +
+                    "はすでに読み込まれています。\n" +
+                    " プログラムを確認してください。");
+#endif
+
+                //それ以上読み込まないのでここで終了
+                return;
+            }
+
+            textures.Add(assetName, texture);
+        }
+        #endregion 画像の読み込み
+
+        /// <summary>
         /// アンロード
         /// </summary>
         public void Unload()
@@ -67,6 +94,7 @@ namespace Nukitashi2.Device
             textures.Clear();//Dictionaryの情報をクリア
         }
 
+        #region 描画開始・終了関連
         /// <summary>
         /// 描画開始
         /// </summary>
@@ -76,13 +104,26 @@ namespace Nukitashi2.Device
         }
 
         /// <summary>
+        /// 描画開始
+        /// </summary>
+        /// <param name="sortMode">ソートモード</param>
+        /// <param name="blendState">合成状態</param>
+        public void Begin(SpriteSortMode sortMode, BlendState blendState)
+        {
+            spriteBatch.Begin(sortMode, blendState);
+        }
+
+        /// <summary>
         /// 描画終了
         /// </summary>
         public void End()
         {
             spriteBatch.End();
         }
+        #endregion  描画開始・終了関連
 
+
+        #region 画像の描画関連
         /// <summary>
         /// 画像の描画（画像サイズはそのまま）
         /// </summary>
@@ -94,7 +135,8 @@ namespace Nukitashi2.Device
             //デバッグモードの時のみ、画像描画前のアセット名チェック
             Debug.Assert(
                 textures.ContainsKey(assetName),
-                "描画時にアセット名の指定を間違えたか、画像の読み込み自体できていません");
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
 
             spriteBatch.Draw(textures[assetName], position, Color.White * alpha);
         }
@@ -111,7 +153,8 @@ namespace Nukitashi2.Device
             //デバッグモードの時のみ、画像描画前のアセット名チェック
             Debug.Assert(
                 textures.ContainsKey(assetName),
-                "描画時にアセット名の指定を間違えたか、画像の読み込み自体できていません");
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
 
             spriteBatch.Draw(
                 textures[assetName], //テクスチャ
@@ -120,101 +163,284 @@ namespace Nukitashi2.Device
                 Color.White * alpha);//透明値
         }
 
-        ///<summary>数字の描画(整数のみ)</summary>
-        ///<param name="">数字画像の名前</param>
-        ///<param name="">位置</param>
-        ///<param name="">表示したい整数値</param>
-        ///<param name="">透明値</param>
-        public void DrawNumber(string assetName, Vector2 position, int number, float alpha = 1.0f)
+
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="positoin">位置</param>
+        /// <param name="rect">切り出し範囲</param>
+        /// <param name="rotate">回転角度</param>
+        /// <param name="rotatePosition">回転軸位置</param>
+        /// <param name="scale">拡大縮小</param>
+        /// <param name="effects">表示反転効果</param>
+        /// <param name="depth">スプライト深度</param>
+        /// <param name="alpha">透明値</param>
+        public void DrawTexture(
+            string assetName,
+            Vector2 positoin,
+            Rectangle? rect, //nullを受け入れられるよう「？」で
+            float rotate,
+            Vector2 rotatePosition,
+            Vector2 scale,
+            SpriteEffects effects = SpriteEffects.None,
+            float depth = 0.0f,
+            float alpha = 1.0f)
         {
-            Debug.Assert(textures.ContainsKey(assetName), "描画時にアセット名の指定を間違えたか、画像の読み込み自体で来ていません");
+            spriteBatch.Draw(
+                textures[assetName],//テクスチャ
+                positoin,           //位置
+                rect,               //切り取り範囲
+                Color.White * alpha,//透明値
+                rotate,             //回転角度
+                rotatePosition,     //回転軸
+                scale,              //拡大縮小
+                effects,            //表示反転効果
+                depth               //スプライト深度
+                );
+        }
+
+        //追加
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="positoin">位置</param>
+        /// <param name="rect">切り出し範囲</param>
+        /// <param name="rotate">回転角度</param>
+        /// <param name="rotatePosition">回転軸位置</param>
+        /// <param name="scale">拡大縮小</param>
+        /// <param name="effects">表示反転効果</param>
+        /// <param name="depth">スプライト深度</param>
+        /// <param name="alpha">透明値</param>
+        public void DrawTexture(
+            string assetName,
+            Vector2 positoin,
+            Rectangle? rect, //nullを受け入れられるよう「？」で
+            float rotate,
+            Vector2 rotatePosition,
+            float scale,
+            SpriteEffects effects = SpriteEffects.None,
+            float depth = 0.0f,
+            float alpha = 1.0f)
+        {
+            spriteBatch.Draw(
+                textures[assetName],//テクスチャ
+                positoin,           //位置
+                rect,               //切り取り範囲
+                Color.White * alpha,//透明値
+                rotate,             //回転角度
+                rotatePosition,     //回転軸
+                scale,              //拡大縮小
+                effects,            //表示反転効果
+                depth               //スプライト深度
+                );
+        }
+        //ここまで
+
+        //追加2
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="positoin">位置</param>
+        /// <param name="rect">切り出し範囲</param>
+        /// <param name="scale">拡大縮小</param>
+        /// <param name="effect">表示向きが正かどうか(trueなら正)</param>
+        public void DrawTexture(string assetName,Vector2 position, Rectangle rect,Vector2 scale,bool effect, float alpha = 1.0f)
+        {
+            //デバッグモードの時のみ、画像描画前のアセット名チェック
+            Debug.Assert(
+                textures.ContainsKey(assetName),
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
+
+            if (!effect) spriteBatch.Draw(textures[assetName], position, rect, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0.0f);
+            else spriteBatch.Draw(textures[assetName], position, rect, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+        }
+        //ここまで2
+
+        /// <summary>
+        /// 画像の描画
+        /// </summary>
+        /// <param name="assetName">アセット名</param>
+        /// <param name="position">位置</param>
+        /// <param name="color">色（通常はColor.White）</param>
+        /// <param name="alpha">透明値</param>
+        public void DrawTexture(string assetName, Vector2 position, Color color, float alpha = 1.0f)
+        {
+            //デバッグモードの時のみ、画像描画前のアセット名チェック
+            Debug.Assert(
+                textures.ContainsKey(assetName),
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
+
+            spriteBatch.Draw(textures[assetName], position, color * alpha);
+        }
+        #endregion  画像の描画
+
+
+        #region 数字の描画
+        /// <summary>
+        /// 数字の描画（整数のみ）
+        /// </summary>
+        /// <param name="assetName">数字画像の名前</param>
+        /// <param name="position">位置</param>
+        /// <param name="number">表示したい整数値</param>
+        /// <param name="alpha">透明値</param>
+        public void DrawNumber(
+            string assetName,
+            Vector2 position,
+            int number,
+            float alpha = 1.0f)
+        {
+            //デバッグモードの時のみ、画像描画前のアセット名チェック
+            Debug.Assert(
+                textures.ContainsKey(assetName),
+                "描画時にアセット名の指定を間違えたか、" +
+                "画像の読み込み自体できていません");
+
+            //マイナスの数は0
             if (number < 0)
             {
                 number = 0;
             }
 
-            int width = 32;
+            int width = 32;//画像横幅
 
+            //数字を文字列化し、1文字ずつ取り出す
             foreach (var n in number.ToString())
             {
-                spriteBatch.Draw(textures[assetName], position, new Rectangle((n - '0') * width, 0, width, 64), Color.White);
-                position.X += width;
-            }
-        }
-        ///<summary>数字の描画(実数、小数点以下は2桁表示)</summary>
-        ///<param name="">数字画像の名前</param>
-        ///<param name="">位置</param>
-        ///<param name="">表示したい実数時</param>
-        ///<param name="">透明値</param>
-        public void DrawNumber(string assetName, Vector2 position, float number, float alpha = 1.0f)
-        {
-            //マイナスは0へ
-            if (number < 0.0f)
-            {
-                number = 0.0f;
-            }
-
-
-            int width = 32;//数字画像1つ分の横幅
-                           //小数部は2桁まで、整数部が1桁の時は0で埋める
-            foreach (var n in number.ToString("00.00"))
-            {
-                //小数の「.」か？
-                if (n == '.')
-                {
-                    spriteBatch.Draw(textures[assetName], position, new Rectangle(10 * width, 0, width, 64), Color.White * alpha);
-                }
-                else
-                {
-                    //数字の描画
-                    spriteBatch.Draw(textures[assetName], position, new Rectangle((n - '0') * width, 0, width, 64), Color.White * alpha);
-                }
+                //数字のテクスチャが数字1つにつき幅64高さ64
+                //文字と文字を引き算し、整数値を取得している
+                spriteBatch.Draw(
+                    textures[assetName],
+                    position,
+                    new Rectangle((n - '0') * width, 0, width, 64),
+                    Color.White);
 
                 //1文字描画したら1桁分右にずらす
                 position.X += width;
             }
         }
 
-        ///<summary>画像の読み込み(画像オブジェクト版)</summary>
-        ///<param name="assetName">アセット名</param>
-        ///<param name="texture">2D画像オブジェクト</param>
-        public void LoadContent(string assetName, Texture2D texture)
+        /// <summary>
+        /// 数字の描画（実数、小数点以下は2桁表示）
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <param name="position"></param>
+        /// <param name="number"></param>
+        /// <param name="alpha"></param>
+        public void DrawNumber(
+            string assetName,
+            Vector2 position,
+            float number,
+            float alpha = 1.0f)
         {
-            //すでにキー(assetName:アセット名)が登録されているとき
-            if (textures.ContainsKey(assetName))
+            //マイナスは０へ
+            if (number < 0.0f)
             {
-#if DEBUG
-                Console.WriteLine(assetName + "はすでに読み込まれています。/nプログラムを確認してください");
-#endif
-                return;
+                number = 0.0f;
             }
-            textures.Add(assetName, texture);
+
+            int width = 32;
+            //小数部は2桁まで、整数部が1桁の時は0で埋める
+            foreach (var n in number.ToString("00.00"))
+            {
+                //小数の「.」か？
+                if (n == '.')
+                {
+                    spriteBatch.Draw(
+                        textures[assetName],
+                        position,
+                        new Rectangle(10 * width, 0, width, 32),//ピリオドは10番目
+                        Color.White * alpha);
+                }
+                else
+                {
+                    //数字の描画
+                    spriteBatch.Draw(
+                        textures[assetName],
+                        position,
+                        new Rectangle((n - '0') * width, 0, width, 32),
+                        Color.White * alpha);
+                }
+
+                //1文字描画したら1桁分右にずらす
+                position.X += width;
+            }
+        }
+        #endregion 数字の描画
+
+        #region レンダーターゲット関連
+        /// <summary>
+        /// レンダーターゲットの初期化
+        /// テクスチャサイズの設定
+        /// </summary>
+        /// <param name="width">テクスチャ横幅</param>
+        /// <param name="height">テクスチャ縦幅</param>
+        public void InitializeRenderTarget(int width, int height)
+        {
+            target2D = new RenderTarget2D(graphicsDevice, width, height);
         }
 
-        ///<summary>画像の描画(拡大縮小回転対応版)</summary>
-        ///<param name="assetName">ア セ ッ ト 名 </param> 
-        /// <param name="positoin">位 置 </param>
-        /// <param name="rect">切 り 出 し 範 囲 </param> 
-        /// <param name="rotate">回 転 角 度 </param>
-        /// <param name="rotatePosition">回 転 軸 位 置 </param> 
-        /// <param name="scale">拡 大 縮 小 </param>
-        /// <param name="effects">表 示 反 転 効 果 </param> 
-        /// <param name="depth">ス プ ラ イ ト 深 度 </param> 
-        /// <param name="alpha">透 明 値 </param> 
-        public void DrawTexture(string assetName, Vector2 positoin, Rectangle? rect, float rotate, Vector2 rotatePosition, Vector2 scale, SpriteEffects effects = SpriteEffects.None, float depth = 0.0f, float alpha = 1.0f)
+        /// <summary>
+        /// レンダーターゲット先への描画開始
+        /// </summary>
+        public void BeginRenderTarget()
         {
-            spriteBatch.Draw(textures[assetName], positoin, rect, Color.White * alpha, rotate, rotatePosition, scale, effects, depth);
+            //描画するレンダーターゲットを設定
+            graphicsDevice.SetRenderTarget(target2D);
+            //描画先のレンダーターゲットの内容を消す
+            graphicsDevice.Clear(Color.Transparent);
+            //レンダーターゲットへの描画開始
+            spriteBatch.Begin();
         }
 
-        ///<summary>画像の描画</summary>
-        ///<param name="assetName">アッセット名</param>
-        ///<param name="position">位置</param>
-        ///<param name="color">色</param>
-        ///<param name="alpha">透明値</param>
-        public void DrawTexture(string assetName, Vector2 position, Color color, float alpha = 1.0f)
+        /// <summary>
+        /// レンダーターゲットへの描画終了
+        /// </summary>
+        public void EndRenderTarget()
         {
-            Debug.Assert(textures.ContainsKey(assetName), "描画時にアセット名の指定を間違えたか、画像の読み込み自体で来ていません");
-            spriteBatch.Draw(textures[assetName], position, color * alpha);
+            //レンダーターゲットへの描画終了
+            spriteBatch.End();
+            //描画を画面に変える
+            graphicsDevice.SetRenderTarget(null);
         }
+
+        /// <summary>
+        /// レンダーターゲットのテクスチャを描画
+        /// </summary>
+        /// <param name="positoin"></param>
+        /// <param name="rect"></param>
+        /// <param name="rotate"></param>
+        /// <param name="rotatePosition"></param>
+        /// <param name="scale"></param>
+        /// <param name="color"></param>
+        /// <param name="effects"></param>
+        /// <param name="depth"></param>
+        public void DrawRenderTargetTexture(
+            Vector2 positoin,
+            Rectangle? rect, //nullを受け入れられるよう「？」で
+            float rotate,
+            Vector2 rotatePosition,
+            float scale,
+            Color color,
+            SpriteEffects effects = SpriteEffects.None,
+            float depth = 0.0f
+            )
+        {
+            spriteBatch.Draw(
+                target2D,
+                positoin,
+                rect,
+                color,
+                rotate,
+                rotatePosition,
+                scale,
+                effects,
+                depth);
+        }
+        #endregion レンダーターゲット関連
     }
 }
