@@ -23,12 +23,10 @@ namespace Nukitashi2.Actor.Blocks
 
         public override void Hit(GameObject gameObject)
         {
-            throw new NotImplementedException();
         }
 
         public override void Updata(GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
     }
 }

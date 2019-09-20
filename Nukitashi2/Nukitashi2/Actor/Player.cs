@@ -60,6 +60,11 @@ namespace Nukitashi2.Actor
             }
             if (gameObject is NextSpace)
                 goal = true;
+            if (gameObject is Weapon && Input.GetKeyTrigger(Keys.C))
+                weapon++;
+            if (gameObject is SpeedUP && Input.GetKeyTrigger(Keys.C))
+                speed += 0.2f;
+
         }
 
         public override void Updata(GameTime gameTime)
