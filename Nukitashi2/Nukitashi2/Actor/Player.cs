@@ -20,11 +20,9 @@ namespace Nukitashi2.Actor
         private Motion motion;
         private bool iHave;//剣を持っているか
         private bool frontR;//右を向いているか
-        float speed;
-        int weapon;
 
         public Player(Vector2 position, GameDevice gameDevice)
-               : base("PlayerStand", position, 64, 128, gameDevice)
+               : base("player", position, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
@@ -60,11 +58,6 @@ namespace Nukitashi2.Actor
             }
             if (gameObject is NextSpace)
                 goal = true;
-            if (gameObject is Weapon && Input.GetKeyTrigger(Keys.C))
-                weapon++;
-            if (gameObject is SpeedUP && Input.GetKeyTrigger(Keys.C))
-                speed += 0.2f;
-
         }
 
         public override void Updata(GameTime gameTime)
@@ -113,7 +106,7 @@ namespace Nukitashi2.Actor
             Direction dir = CheckDirection(gameObject);
             if (dir == Direction.Top)
             {
-                if (velocity.Y > 0.0f)
+                if (position.Y > 0.0f)
                 {
                     position.Y = gameObject.getRectangle().Top - height;
                     velocity.Y = 0.0f;
