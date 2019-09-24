@@ -45,11 +45,11 @@ namespace Nukitashi2.Scene
             position = new Vector2(scWidth / 2 + scWidth / 4, scHeight / 2 + scHeight / 4);
             downFlag = true;
             motion = new Motion();
-            for (int i = 0; i < 6; i++) 
+            for (int i = 0; i < 2; i++) 
             {
-                motion.Add(i, new Rectangle(128 * i, 128 * i, 128, 128));
+                motion.Add(i, new Rectangle(134 * i, 0, 128, 128));
             }
-            motion.Initialize(new Range(0, 5), new CountDownTimer(0.2f));
+            motion.Initialize(new Range(0, 1), new CountDownTimer(0.2f));
         }
 
         public bool IsEnd()

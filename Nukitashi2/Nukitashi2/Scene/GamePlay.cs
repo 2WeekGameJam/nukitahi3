@@ -19,16 +19,21 @@ namespace Nukitashi2.Scene
         Shoot shoot;
         GameObjectManager gameObjectManager;
         List<Enemy> enemies;
+        Stage stage;
+        string backScreen;
+        int stageCount;
         public GamePlay()
         {
             isEndFlag = false;
             gameObjectManager = new GameObjectManager();
+            stage = Stage.Base;
+            stageCount = 0;
         }
 
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("luiman", Vector2.Zero);
+            renderer.DrawTexture(backScreen, Vector2.Zero);
             map.Draw(renderer);
             gameObjectManager.Draw(renderer);
             renderer.End();
@@ -39,13 +44,27 @@ namespace Nukitashi2.Scene
             isEndFlag = false;
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
-            map.Load("map.csv","./csv/");
+            if (stage == Stage.Base)
+            {
+                map.Load("map.csv", "./csv/");
+                backScreen = "Home";
+            }
+            else if (stage == Stage.Batle1)
+            {
+                map.Load("stage0"+stageCount+".csv", "./csv/");
+                backScreen = "Stage1";
+            }
+            else if (stage == Stage.Batle2)
+            {
+                map.Load("stage02", "./csv/");
+                backScreen = "Stage2";
+            }
             enemies = new List<Enemy>();
             player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
             enemies = map.EnemyAdd();
-            for(int i=0;i<enemies.Count;i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 gameObjectManager.Add(enemies[i]);
             }
@@ -55,21 +74,18 @@ namespace Nukitashi2.Scene
         {
             return isEndFlag;
         }
-
         public Scene Next()
         {
             return Scene.GameOver;
         }
-
         public void Shutdown()
         {
-            
-        }
 
+        }
         public void Update(GameTime gameTime)
         {
             map.Update(gameTime);
-            if(Input.GetKeyTrigger(Keys.Z) && player.ReturnHave())
+            if (Input.GetKeyTrigger(Keys.Z) && player.ReturnHave())
             {
                 if (player.CheckFront())
                 {
@@ -82,20 +98,19 @@ namespace Nukitashi2.Scene
                 gameObjectManager.Add(shoot);
                 player.DontHave();
             }
-            if(player.GetNext())
+            if (player.GetNext())
             {
-                isEndFlag = true;
+                stage = Stage.Batle1;
+                stageCount++;
+                Initialize();
             }
-
             if (enemies.Count <= 0)
-                isEndFlag = true;
-
-            if (Input.GetKeyTrigger(Keys.X))
             {
-                enemies.RemoveAt(0);
+                stageCount++;
+                Initialize();
             }
-
-
+            if (Input.GetKeyTrigger(Keys.X))
+                enemies.RemoveAt(0);
             gameObjectManager.Update(gameTime);
         }
     }

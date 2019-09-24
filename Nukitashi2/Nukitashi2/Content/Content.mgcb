@@ -109,21 +109,6 @@
 /processorParam:TextureFormat=Color
 /build:Texture/player.png
 
-#begin csv/GameObjectParameter.csv
-/copy:csv/GameObjectParameter.csv
-
-#begin csv/GameObjectParameter2.csv
-/copy:csv/GameObjectParameter2.csv
-
-#begin csv/map.csv
-/copy:csv/map.csv
-
-#begin csv/stage01.csv
-/copy:csv/stage01.csv
-
-#begin csv/stage02.csv
-/copy:csv/stage02.csv
-
 #begin Texture/EnemyWark.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -363,4 +348,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Texture/Title_Boss.png
+
+#begin csv/map.csv
+/copy:csv/map.csv
+
+#begin csv/stage01.csv
+/copy:csv/stage01.csv
+
+#begin csv/stage02.csv
+/copy:csv/stage02.csv
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/Texture/Weapons_store.png</SourceFile>
-  <SourceTime>2019-09-20T16:01:40.1121213+09:00</SourceTime>
+  <SourceTime>2019-09-20T16:16:34.6207187+09:00</SourceTime>
   <DestFile>D:/2019_September_2Week/Nukitashi2/Nukitashi2/Content/bin/Windows/Texture/Weapons_store.xnb</DestFile>
-  <DestTime>2019-09-20T16:03:58.8890549+09:00</DestTime>
+  <DestTime>2019-09-25T00:22:48.4564296+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
