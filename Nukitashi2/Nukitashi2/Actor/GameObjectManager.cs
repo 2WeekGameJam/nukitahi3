@@ -116,17 +116,15 @@ namespace Nukitashi2.Actor
         }
         public GameObject GetPlayer()
         {
-            //GameObject find = gameObjectList.Find(c => c is Player);
-            //if (find != null && !find.IsDead())
-            //{
-            //    return find;
-            //}
+            GameObject find = gameObjectList.Find(c => c is Player);
+            if (find != null && !find.IsDead())
+            {
+                return find;
+            }
             return null;
         }
         public bool IsPlayerDead()
         {
-            //GameObject find = gameObjectList.Find(c => c is Player);
-            //return (find == null || find.IsDead());
             return false;
         }
         public int MapX()

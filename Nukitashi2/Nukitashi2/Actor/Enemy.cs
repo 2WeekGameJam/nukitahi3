@@ -22,14 +22,14 @@ namespace Nukitashi2.Actor
         float chargeTime;
 
         Player player;
+        GameObjectManager gameObjectManager;
         float distance;
 
-        public Enemy(Vector2 position, GameDevice gameDevice,Player player)
+        public Enemy(Vector2 position, GameDevice gameDevice)
                : base("EnemyWark", position, 32, 32, gameDevice)
         {
             isJump = true;
             jumpAttack = false;
-            this.player = player;
             motion = new Motion();
             for (int i = 0; i < 2; i++)
             {
@@ -41,7 +41,7 @@ namespace Nukitashi2.Actor
         }
 
         public Enemy(Enemy other)
-           : this(other.position, other.gameDevice,other.player)
+           : this(other.position, other.gameDevice)
         { }
 
         public override object Clone()
@@ -73,6 +73,7 @@ namespace Nukitashi2.Actor
 
         public override void Updata(GameTime gameTime)
         {
+            if (player == null) return;
             #region ジャンプのクールタイム
             if (jumpCharge ==false)
             {
@@ -153,6 +154,12 @@ namespace Nukitashi2.Actor
         public override void Draw(Renderer renderer)
         {
             renderer.DrawTexture(name, position,motion.DrawingRange());
+        }
+
+        public void GetObject(GameObjectManager gameObjectManager)
+        {
+            this.gameObjectManager = gameObjectManager;
+            player = (Player)gameObjectManager.GetPlayer();
         }
     }
 }

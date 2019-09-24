@@ -44,6 +44,7 @@ namespace Nukitashi2.Scene
             isEndFlag = false;
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
+            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
             if (stage == Stage.Base)
             {
                 map.Load("map.csv", "./csv/");
@@ -60,12 +61,12 @@ namespace Nukitashi2.Scene
                 backScreen = "Stage2";
             }
             enemies = new List<Enemy>();
-            player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
             gameObjectManager.Add(map);
             gameObjectManager.Add(player);
             enemies = map.EnemyAdd();
             for (int i = 0; i < enemies.Count; i++)
             {
+                enemies[i].GetObject(gameObjectManager);
                 gameObjectManager.Add(enemies[i]);
             }
         }

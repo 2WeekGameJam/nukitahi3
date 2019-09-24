@@ -22,7 +22,7 @@ namespace Nukitashi2.Actor
         private bool frontR;//右を向いているか
 
         public Player(Vector2 position, GameDevice gameDevice)
-               : base("player", position, 32, 32, gameDevice)
+               : base("PlayerStand", position, 32, 32, gameDevice)
         {
             velocity = Vector2.Zero;
             isJump = true;
