@@ -33,7 +33,7 @@ namespace Nukitashi2.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture(backScreen, Vector2.Zero);
+            renderer.DrawTexture(backScreen, Vector2.Zero,null,new Vector2(0.75f,0.75f),true);
             map.Draw(renderer);
             gameObjectManager.Draw(renderer);
             renderer.End();
@@ -45,6 +45,7 @@ namespace Nukitashi2.Scene
             gameObjectManager.Initialize();
             map = new Map(GameDevice.Instance());
             player = new Player(new Vector2(32 * 2, 32 * 10), GameDevice.Instance());
+            gameObjectManager.Add(player);
             if (stage == Stage.Base)
             {
                 map.Load("map.csv", "./csv/");
@@ -62,7 +63,6 @@ namespace Nukitashi2.Scene
             }
             enemies = new List<Enemy>();
             gameObjectManager.Add(map);
-            gameObjectManager.Add(player);
             enemies = map.EnemyAdd();
             for (int i = 0; i < enemies.Count; i++)
             {

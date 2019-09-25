@@ -31,8 +31,7 @@ namespace Nukitashi2.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("haikei", Vector2.Zero);
-            renderer.DrawTexture("pushspace", new Vector2(Screen.Width / 2, Screen.Height / 1.5f));
+            renderer.DrawTexture("Title", Vector2.Zero,null,new Vector2(0.75f,0.75f),true);
             renderer.DrawTexture("Title_Boss", position, motion.DrawingRange());
             renderer.End();
         }
@@ -42,7 +41,7 @@ namespace Nukitashi2.Scene
             isEndFlag = false;
             scWidth = Def.Screen.Width;
             scHeight = Def.Screen.Height;
-            position = new Vector2(scWidth / 2 + scWidth / 4, scHeight / 2 + scHeight / 4);
+            position = new Vector2(scWidth / 2 + scWidth / 6, scHeight / 2 + scHeight / 4);
             downFlag = true;
             motion = new Motion();
             for (int i = 0; i < 2; i++) 

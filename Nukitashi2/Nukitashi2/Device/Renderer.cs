@@ -247,7 +247,7 @@ namespace Nukitashi2.Device
         /// <param name="rect">切り出し範囲</param>
         /// <param name="scale">拡大縮小</param>
         /// <param name="effect">表示向きが正かどうか(trueなら正)</param>
-        public void DrawTexture(string assetName,Vector2 position, Rectangle rect,Vector2 scale,bool effect, float alpha = 1.0f)
+        public void DrawTexture(string assetName,Vector2 position, Rectangle? rect,Vector2 scale,bool effect, float alpha = 1.0f)
         {
             //デバッグモードの時のみ、画像描画前のアセット名チェック
             Debug.Assert(
