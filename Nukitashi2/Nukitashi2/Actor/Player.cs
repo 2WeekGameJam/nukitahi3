@@ -172,21 +172,43 @@ namespace Nukitashi2.Actor
 
         public override void Draw(Renderer renderer)
         {
-            if (isJump)
+            if (!frontR)
             {
-                renderer.DrawTexture("PlayerJump", position);
-            }
-            else if(stndFlag)
-            {
-                renderer.DrawTexture(name, position, motion.DrawingRange());
-            }
-            else if(attackFlag)
-            {
-                renderer.DrawTexture("PlayerAttack", position, aMotion.DrawingRange());
+                if (isJump)
+                {
+                    renderer.DrawTexture("PlayerJump", position, null, new Vector2(1, 1), false);
+                }
+                else if (stndFlag)
+                {
+                    renderer.DrawTexture(name, position, motion.DrawingRange(), new Vector2(1, 1), false);
+                }
+                else if (attackFlag)
+                {
+                    renderer.DrawTexture("PlayerAttack", position, aMotion.DrawingRange(), new Vector2(1, 1), false);
+                }
+                else
+                {
+                    renderer.DrawTexture("PlayerRun", position, rMotion.DrawingRange(), new Vector2(1, 1), false);
+                }
             }
             else
             {
-                renderer.DrawTexture("PlayerRun", position, rMotion.DrawingRange());
+                if (isJump)
+                {
+                    renderer.DrawTexture("PlayerJump", position);
+                }
+                else if (stndFlag)
+                {
+                    renderer.DrawTexture(name, position, motion.DrawingRange());
+                }
+                else if (attackFlag)
+                {
+                    renderer.DrawTexture("PlayerAttack", position, aMotion.DrawingRange());
+                }
+                else
+                {
+                    renderer.DrawTexture("PlayerRun", position, rMotion.DrawingRange());
+                }
             }
             //renderer.DrawTexture(name, position, motion.DrawingRange());
 
