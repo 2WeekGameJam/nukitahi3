@@ -88,6 +88,7 @@ namespace Nukitashi2.Scene
             map.Update(gameTime);
             if (Input.GetKeyTrigger(Keys.Z) && player.ReturnHave())
             {
+                player.attackFlag = true;
                 if (player.CheckFront())
                 {
                     shoot = new Shoot(player.GetPosition() + new Vector2(69, 0), GameDevice.Instance(), player.CheckFront());

@@ -15,26 +15,44 @@ namespace Nukitashi2.Actor
     class Player : GameObject
     {
         private Vector2 velocity;
-        private bool isJump;
+        private bool isJump;//ジャンプしているかどうか
         private bool goal;
         private Motion motion;
+        private Motion rMotion;
+        private Motion aMotion;
         private bool iHave;//剣を持っているか
         private bool frontR;//右を向いているか
+
+        private bool stndFlag;//動いているかどうか(動いていなければtrue)
+        public bool attackFlag;//攻撃しているかどうか
 
         public Player(Vector2 position, GameDevice gameDevice)
                : base("PlayerStand", position, 32, 32, gameDevice)
         {
+            stndFlag = false;
+            attackFlag = false;
             velocity = Vector2.Zero;
             isJump = true;
             goal = false;
             iHave = true;
             frontR = true;
-            //motion = new Motion();
-            //for (int i = 0; i < 2; i++)
-            //{
-            //    motion.Add(i, new Rectangle(32, 32 * (i / 2), 32, 32));
-            //}
-            //motion.Initialize(new Range(0, 1), new CountDownTimer(1.0f));
+            motion = new Motion();
+            motion.Add(0, new Rectangle(0, 0, 64, 128));
+            motion.Add(1, new Rectangle(64, 0, 64, 128));
+            motion.Initialize(new Range(0, 1), new CountDownTimer(0.2f));
+
+            rMotion = new Motion();
+            rMotion.Add(0, new Rectangle(0, 0, 64, 128));
+            rMotion.Add(1, new Rectangle(64, 0, 64, 128));
+            rMotion.Add(2, new Rectangle(128, 0, 64, 128));
+            rMotion.Add(3, new Rectangle(192, 0, 64, 128));
+            rMotion.Initialize(new Range(0, 3), new CountDownTimer(0.2f));
+
+            aMotion = new Motion();
+            aMotion.Add(0, new Rectangle(0, 0, 64, 128));
+            aMotion.Add(1, new Rectangle(64, 0, 64, 128));
+            aMotion.Add(2, new Rectangle(128, 0, 64, 128));
+            aMotion.Initialize(new Range(0, 2), new CountDownTimer(0.4f));
         }
 
         public Player(Player other)
@@ -62,6 +80,9 @@ namespace Nukitashi2.Actor
 
         public override void Updata(GameTime gameTime)
         {
+            motion.Update(gameTime);
+            rMotion.Update(gameTime);
+            aMotion.Update(gameTime);
             if ((isJump == false) &&
                 (Input.GetKeyTrigger(Keys.Space)))
             {
@@ -82,8 +103,9 @@ namespace Nukitashi2.Actor
             //    isDeadFlag = true;
             //}
             velocity.X = Input.Velocity().X * speed;
+            stndFlag = false;
 
-            if(velocity.X >0.0f)
+            if (velocity.X >0.0f)
             {
                 frontR = true;
             }
@@ -97,8 +119,13 @@ namespace Nukitashi2.Actor
                 velocity.X = 0;
             }
 
+            
+
             position = position + velocity;
             //UpdateMotion();
+            
+            if (velocity.X != 0) return;
+            stndFlag = true;
         }
 
         private void hitBlock(GameObject gameObject)
@@ -133,7 +160,26 @@ namespace Nukitashi2.Actor
 
         public override void Draw(Renderer renderer)
         {
-            renderer.DrawTexture(name, position/*, motion.DrawingRange()*/);
+            if (isJump)
+            {
+                renderer.DrawTexture("PlayerJump", position);
+            }
+            else if(stndFlag)
+            {
+                renderer.DrawTexture(name, position, motion.DrawingRange());
+            }
+            else if(attackFlag)
+            {
+                renderer.DrawTexture("PlayerAttack", position, aMotion.DrawingRange());
+                attackFlag = false;
+            }
+            else
+            {
+                renderer.DrawTexture("PlayerRun", position, rMotion.DrawingRange());
+            }
+            //renderer.DrawTexture(name, position, motion.DrawingRange());
+
+            
         }
 
         //private void UpdateMotion()
