@@ -26,6 +26,8 @@ namespace Nukitashi2.Actor
         private bool stndFlag;//動いているかどうか(動いていなければtrue)
         public bool attackFlag;//攻撃しているかどうか
 
+        public CountDownTimer attackTimer;
+
         public Player(Vector2 position, GameDevice gameDevice)
                : base("PlayerStand", position, 32, 32, gameDevice)
         {
@@ -53,6 +55,8 @@ namespace Nukitashi2.Actor
             aMotion.Add(1, new Rectangle(64, 0, 64, 128));
             aMotion.Add(2, new Rectangle(128, 0, 64, 128));
             aMotion.Initialize(new Range(0, 2), new CountDownTimer(0.4f));
+
+            attackTimer = new CountDownTimer(1.3f);
         }
 
         public Player(Player other)
@@ -123,6 +127,14 @@ namespace Nukitashi2.Actor
 
             position = position + velocity;
             //UpdateMotion();
+
+            if (attackFlag)
+            {
+                attackTimer.Update(gameTime);
+                if (!attackTimer.IsTime()) return;
+                attackFlag = false;
+                attackTimer = new CountDownTimer(1.2f);
+            }
             
             if (velocity.X != 0) return;
             stndFlag = true;
@@ -171,7 +183,6 @@ namespace Nukitashi2.Actor
             else if(attackFlag)
             {
                 renderer.DrawTexture("PlayerAttack", position, aMotion.DrawingRange());
-                attackFlag = false;
             }
             else
             {
