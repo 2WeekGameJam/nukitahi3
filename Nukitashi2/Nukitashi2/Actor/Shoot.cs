@@ -19,7 +19,7 @@ namespace Nukitashi2.Actor
         bool reflect;
 
         public Shoot(Vector2 pos, GameDevice gameDevice,bool frontR)
-            : base("blockkusa", pos, 8, 16, gameDevice)
+            : base("weapon", pos, 8, 16, gameDevice)
         {
             isDeadFlag = false;
             drop = false;
